@@ -40,7 +40,6 @@ myArray = [64, 25, 12, 22, 11]
 
 def bubbleSort(arr):
 
-    swapped = False
     # Traverse through all array elements
     for i in range(len(arr) - 1):
         swapped = False
@@ -53,3 +52,47 @@ def bubbleSort(arr):
         # If no two elements were swapped by inner loop, then break
         if not swapped:
             break
+
+
+def bubble_sort(my_array : list):
+
+    nums = my_array.copy()
+
+    for i in range(len(nums) - 1) :
+        swapped = False
+
+        for j in range(len(nums) - 1- i):
+            if nums[j] > nums[j + 1] :
+                nums[j] , nums[j +1 ] = nums[j +1 ], nums[j]
+                swapped = True
+        if not swapped:
+            break
+    
+    return nums
+
+# 3. Insertion Sort
+#  assumes that the first element is already sorted, then it goes through the remaining elements one by one, placing each in its proper position relative to those already sorted. The algorithm selects an element, compares it to the elements in the sorted section, and inserts it in the correct position by shifting all larger elements to the right. This process is repeated for each element until the entire array is organized
+# https://www.youtube.com/watch?v=8mJ-OhcfpYg
+
+
+def insertion_sort(my_array : list):
+
+    nums = my_array.copy()
+
+    for i in range(1, len(nums) ):
+        target_value = nums[i] # value to be inserted
+
+        j = i - 1
+
+        while j >=0 and nums[j] > target_value:
+            # Shifting Element if it is greater than the target     
+            nums[j + 1] = nums[j]
+            
+            j -= 1
+        
+        # Insert the target value at the correct position
+        # one index after the last element that was shifted.
+        nums[j +1 ] = target_value
+    
+    return nums
+
