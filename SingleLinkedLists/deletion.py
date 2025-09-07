@@ -142,6 +142,20 @@ class LinkedList:
         pred.next = replacement_node
         to_delete_node = None
 
+    def length(self):
+
+        current = self.head
+
+        if current is None:
+            return 0
+        
+        count = 1
+        while current and current.next is not None:
+            current = current.next
+            count +=1
+        return count
+
+
     def tranverse(self):
         current = self.head
 
@@ -166,3 +180,4 @@ link_list.delete_node(25)
 link_list.tranverse()
 link_list.delete_nodeAtPostion(2)
 link_list.tranverse()
+link_list.length()
