@@ -13,6 +13,7 @@ class reverse_linked_list:
         while current:
             next_node = current.next  # Save the next node
             current.next = prev  # Reverse the link
+           
             prev = current  # Move prev to the current node
             current = next_node  # Move to the next node in the original list
 
@@ -47,3 +48,40 @@ restored_head = reverse.reverseList(reversed_head)
 print(reverse.print_list(restored_head))
 
 print(reverse.print_list(reversed_head)) # prints 4 
+
+
+################ merge two sorted linked list
+
+
+class Node :
+    def  __init__(self, data):
+        self.data = data
+        self.next = None
+
+class merge_sorted:
+   
+    def merge_sorted(self, llist1: Node, llist2: Node ) :
+
+        # we are not handle any edge cases like empty link list
+        # just focussing on merging part    
+        current = llist1
+        while current.next:  # Continue until we reach the last node
+            current = current.next
+            
+        # Connect the last node to the second list
+        current.next = llist2
+        
+        return llist1
+
+
+llink1 = Node(1)
+llink1.next = Node(5)
+llink1.next.next = Node(7)
+
+llink2 = Node(9)
+llink2.next = Node(10)
+llink2.next.next = Node(11)
+
+linked_merge = merge_sorted()
+linked_merge.merge_sorted(llink1, llink2)
+

@@ -155,7 +155,56 @@ class LinkedList:
             count +=1
         return count
 
+    def swap_nodes(self, key_1, key_2):
 
+        if key_1 == key_2:
+            return 
+
+        # find position for key 1
+        prev_1 = None 
+        curr_1 = self.head 
+        while curr_1 and curr_1.data != key_1:
+            prev_1 = curr_1 
+            curr_1 = curr_1.next
+
+        # find position for key 2
+        prev_2 = None 
+        curr_2 = self.head 
+        while curr_2 and curr_2.data != key_2:
+            prev_2 = curr_2 
+            curr_2 = curr_2.next
+
+        # if curr are None then 
+        if not curr_1 or not curr_2:
+            return 
+
+        # swap for the previous node
+        if prev_1:
+            prev_1.next = curr_2
+        else:
+            self.head = curr_2
+
+        if prev_2:
+            prev_2.next = curr_1
+        else:
+            self.head = curr_1
+
+        # swap for the current node
+        curr_1.next, curr_2.next = curr_2.next, curr_1.next
+
+    def reverse(self):
+
+        current = self.head
+        previous = None
+
+        while current :
+            next_node = current.next
+            current.next = previous
+
+            previous, current = current , next_node
+        self.head = previous
+
+    
     def tranverse(self):
         current = self.head
 
@@ -172,7 +221,7 @@ link_list.append("4")
 link_list.tranverse()
 link_list.prepend("0")
 link_list.tranverse()
-link_list.insert_after_node(link_list.head.next, "D")
+link_list.insert_after_node(link_list.head.next, "D")   
 link_list.tranverse()
 link_list.insertAtPosition(25, 2)
 link_list.tranverse()
@@ -181,3 +230,8 @@ link_list.tranverse()
 link_list.delete_nodeAtPostion(2)
 link_list.tranverse()
 link_list.length()
+link_list.swap_nodes("3", "2")
+link_list.tranverse()
+link_list.reverse()
+link_list.tranverse()
+
