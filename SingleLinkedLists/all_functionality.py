@@ -204,6 +204,25 @@ class LinkedList:
             previous, current = current , next_node
         self.head = previous
 
+    def remove_duplicate(self):
+
+        cur = self.head
+        prev = None
+
+        dup_values = dict()
+        
+        while cur:
+
+            if cur.data in dup_values :
+                # remove duplicate
+                prev.next = cur.next
+            
+            else:
+                dup_values[cur.data] = 1
+                prev = cur
+            
+            cur= prev.next
+
     
     def tranverse(self):
         current = self.head
@@ -217,6 +236,7 @@ link_list = LinkedList()
 link_list.append("1")
 link_list.append("2")
 link_list.append("3")
+link_list.append("4")
 link_list.append("4")
 link_list.tranverse()
 link_list.prepend("0")
@@ -233,5 +253,7 @@ link_list.length()
 link_list.swap_nodes("3", "2")
 link_list.tranverse()
 link_list.reverse()
+link_list.tranverse()
+link_list.remove_duplicate()
 link_list.tranverse()
 
