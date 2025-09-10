@@ -61,3 +61,45 @@ def find_all_uppercase(input_str, indx=0, result=None):
 str_1 = "lucidProGramming"
 uppercase_letters = find_all_uppercase(str_1)
 print(uppercase_letters)  # Should print ['P', 'G']
+
+
+# Calculate String Length
+
+# Recursive length calculation: O(n)
+def recursive_str_len(input_str):
+    if input_str == '':
+        return 0
+    
+    input_str = input_str[1:]
+    return 1 + recursive_str_len(input_str)
+
+recursive_str_len(str_1)
+
+# Count Consonants in String
+
+def count_consonant(input_str : str, idx = 0, count = None):
+
+    consonant = "aeiou"
+
+    if count is None:
+        count = 0
+
+    if idx >= len(input_str) :
+        return count
+    
+    if input_str[idx].lower in consonant :
+        count +=1
+
+    return count_consonant(input_str, idx +1, count)
+
+# Product of Two Positive Integers
+# Given two numbers, find their product using recursion
+
+def recursive_multiply(x, y):
+    if x < y:
+        return recursive_multiply(y, x)
+    if y == 0 or x == 0 :
+        return 0
+    return x + recursive_multiply(x, y-1)
+
+# for larger number , it will cross recursion limit
